@@ -23,7 +23,7 @@ builder.Services.Configure<CircuitBreakerSettings>(
 builder.Services.AddHttpClient("FankfurterService", client =>
 {
     client.BaseAddress = new Uri("https://api.frankfurter.app");
-}).AddPolicyHandler(GetCircuitBreakerPolicy());
+}).AddPolicyHandler(new CircuitBreakerPolicy().GetCircuitBreakerPolicy());
 
 var app = builder.Build();
 
@@ -41,24 +41,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-// Circuit Breaker Policy
-IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
-{
-    return HttpPolicyExtensions
-        .HandleTransientHttpError()
-        .CircuitBreakerAsync(
-            handledEventsAllowedBeforeBreaking: 3,
-            durationOfBreak: TimeSpan.FromSeconds(30),
-            onBreak: (exception, breakDelay) =>
-            {
-                Console.WriteLine($"Circuit broken: {exception.Exception.Message}");
-            },
-            onReset: () =>
-            {
-                Console.WriteLine("Circuit reset");
-            },
-            onHalfOpen: () =>
-            {
-                Console.WriteLine("Circuit in half-open state");
-            });
-}
+ 
+ 
