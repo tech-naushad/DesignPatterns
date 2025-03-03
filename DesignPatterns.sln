@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{93B03D71-30C6-44EE-A774-CD9DC4A7FC97}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservice", "Microservice", "{58A32EC2-2C76-4BB2-AB1A-E387CCF0B1C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircuitBreaker", "Microservice\CircuitBreaker\CircuitBreaker.csproj", "{91EB1DE5-E042-44CF-8134-810ABC4EE601}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateLimit", "Microservice\RateLimit\RateLimit.csproj", "{044378D2-51BC-4386-A77E-29310AF69D7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructuralPatterns", "StructuralPatterns\StructuralPatterns.csproj", "{9BDBB71B-40BA-41CA-9543-5CB728C6178C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +25,10 @@ Global
 		{044378D2-51BC-4386-A77E-29310AF69D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{044378D2-51BC-4386-A77E-29310AF69D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{044378D2-51BC-4386-A77E-29310AF69D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BDBB71B-40BA-41CA-9543-5CB728C6178C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BDBB71B-40BA-41CA-9543-5CB728C6178C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BDBB71B-40BA-41CA-9543-5CB728C6178C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BDBB71B-40BA-41CA-9543-5CB728C6178C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
