@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace StructuralPatterns.Adapter
 {
-    public interface IPaymentGateway
+    public interface IRobotAdapter
     {
-        void ProcessPayment(decimal amount);
+        void MoveTowardsLeft();
+        void MoveTowardsRight();
+        void MoveTowardsUp();
+        void MoveTowardsDown();
     }
 }

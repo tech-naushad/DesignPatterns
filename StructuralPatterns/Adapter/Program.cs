@@ -1,17 +1,15 @@
-﻿using StructuralPatterns.Adapter.Adaptees;
-using StructuralPatterns.Adapter.Adapters;
-
-namespace StructuralPatterns.Adapter
+﻿namespace StructuralPatterns.Adapter
 {
     class Program
     {
         static void Main()
         {
-            IPaymentGateway paypalGateway = new PayPalAdapter(new PayPal());
-            paypalGateway.ProcessPayment(100);
+            var robotAdapter = new RobotAdapter(new LegacyRobot());
 
-            IPaymentGateway wePayGateway = new WePayAdapter(new WePay());
-            wePayGateway.ProcessPayment(200);
+            robotAdapter.MoveTowardsLeft();
+            robotAdapter.MoveTowardsRight();
+            robotAdapter.MoveTowardsUp();
+            robotAdapter.MoveTowardsDown();
         }
     }
 }
