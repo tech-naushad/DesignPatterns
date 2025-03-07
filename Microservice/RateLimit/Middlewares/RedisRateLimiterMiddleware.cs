@@ -1,4 +1,5 @@
 ﻿using StackExchange.Redis;
+using System.Net;
 
 namespace RateLimit.Middlewares
 {
@@ -6,10 +7,15 @@ namespace RateLimit.Middlewares
     {
         private readonly RequestDelegate _next;
         private readonly IDatabase _redisDb;
-        public RateLimiterMiddleware(RequestDelegate next, IConnectionMultiplexer redis)
+        private readonly IConfiguration _configuration;
+        private readonly int _limit;
+        private readonly TimeSpan _period;
+        public RateLimiterMiddleware(RequestDelegate next, IConnectionMultiplexer redis, IConfiguration config)
         {
             _next = next;
             _redisDb = redis.GetDatabase();
+            _limit = int.Parse(config["RateLimit:Limit"]);
+            _period = TimeSpan.Parse(config["RateLimit:Period"]);
         }
 
         public async Task Invoke(HttpContext context)
@@ -25,14 +31,14 @@ namespace RateLimit.Middlewares
 
             var requestCount = (int)(await _redisDb.StringGetAsync(redisKey));
 
-            if (requestCount >= 5)
+            if (requestCount >= _limit)
             {
-                context.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+                context.Response.StatusCode = (int)HttpStatusCode.TooManyRequests;
                 await context.Response.WriteAsync("Service unable to handle the requests. Try again later");
                 return;
             }
             await _redisDb.StringIncrementAsync(redisKey);
-            _redisDb.KeyExpireAsync(redisKey, TimeSpan.FromSeconds(60)); //Cache till 1 minute
+            _redisDb.KeyExpireAsync(redisKey, _period); //Cache till 1 minute set in appsetting
 
             await _next(context);
 

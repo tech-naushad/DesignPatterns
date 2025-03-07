@@ -10,9 +10,10 @@ public class RateLimitController : ControllerBase
     {
     }
 
+    //Mimic the call to verify the number of requests 
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        return Ok("Rate Limit Service response");   
+        return Ok("Succesful Service response");   
     }
 }

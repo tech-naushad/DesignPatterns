@@ -9,7 +9,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 //Radis Cache setting
-builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
+var connectionString = builder.Configuration["Redis:ConnectionString"];
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(connectionString));
 
 var app = builder.Build();
 
@@ -39,3 +41,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//For Integration Tests
+public partial class Program { }
