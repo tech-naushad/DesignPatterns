@@ -11,12 +11,12 @@ a client (user, service, or API consumer) can make within a given time window.
 
 
 ## Implementation
-Architecture
-### Client Request → Sent to Rate Limit Service.
-### Rate Limit Check → Using Redis as distributed cache with docker container support.
-### Forward Allowed Requests → Passed to actual microservice.
-### Reject Requests → Blocked with 429 Too Many Requests.
-### RateLimitTests -> Two test cases with ok below limit and after limit. The cache store for 1 minute can be increased
+### Architecture
+*  Client Request → Sent to Rate Limit Service.
+*  Rate Limit Check → Using Redis as distributed cache with docker container support.
+*  Forward Allowed Requests → Passed to actual microservice.
+*  Reject Requests → Blocked with 429 Too Many Requests.
+*  RateLimitTests -> Two test cases with ok below limit and after limit. The cache store for 1 minute can be increased
 
 ## Command for Redis setup in docker container
 ### pull the image : docker pull redis
