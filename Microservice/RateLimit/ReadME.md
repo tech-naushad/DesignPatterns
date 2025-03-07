@@ -19,5 +19,5 @@ Architecture
 ### RateLimitTests -> Two test cases with ok below limit and after limit. The cache store for 1 minute can be increased
 
 ## Command for Redis setup in docker container
-pull the image : docker pull redis
-run the coniatner with Persistent Data Storage :  docker run --name rate-limit-redis-cache -d -p 6379:6379 -v redis_data:/data redis
+### pull the image : docker pull redis
+### run the coniatner with Persistent Data Storage :  docker run --name rate-limit-redis-cache -d -p 6379:6379 -v redis_data:/data redis
