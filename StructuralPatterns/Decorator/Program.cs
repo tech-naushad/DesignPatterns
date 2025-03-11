@@ -1,27 +1,32 @@
 ﻿using StructuralPatterns.Decorator.ConcreteDecorators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StructuralPatterns.Decorator
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        //Microservice code
+        public static void Main(string[] args)
         {
-            ICoffee coffee = new SimpleCoffee();
-            Console.WriteLine($"{coffee.GetDescription()} - ${coffee.GetPrice()}");
+            //Place the below code to Microservice Program.cs 
 
-            // Add Milk
-            coffee = new MilkDecorator(coffee);
-            Console.WriteLine($"{coffee.GetDescription()} - ${coffee.GetPrice()}");
 
-            // Add Sugar
-            coffee = new SugarDecorator(coffee);
-            Console.WriteLine($"{coffee.GetDescription()} - ${coffee.GetPrice()}");
-           
-        }
+            //var builder = WebApplication.CreateBuilder(args);
+
+            //// Register middlewares as singletons
+            //builder.Services.AddSingleton<IMiddleware, AuthenticationMiddlewareAdapter>();
+            //builder.Services.AddSingleton<IMiddleware, LoggingMiddlewareAdapter>();
+            //builder.Services.AddSingleton<IMiddleware, RateLimitingMiddlewareAdapter>();
+
+            //var app = builder.Build();
+
+            //// Register middleware components in the pipeline
+            //app.UseMiddleware<AuthenticationMiddlewareAdapter>();
+            //app.UseMiddleware<LoggingMiddlewareAdapter>();
+            //app.UseMiddleware<RateLimitingMiddlewareAdapter>();
+
+
+            //app.Run();
+        }        
+         
     }
 }
